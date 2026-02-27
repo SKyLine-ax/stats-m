@@ -1,20 +1,19 @@
 name: WakaTime Metrics
 on:
-  schedule: [{cron: "0 0 * * *"}] # Обновление раз в сутки
-  workflow_dispatch: # Возможность запустить вручную
+  schedule: [{cron: "0 0 * * *"}] 
+  workflow_dispatch: 
 jobs:
   github-metrics:
     runs-on: ubuntu-latest
     steps:
       - uses: lowlighter/metrics@latest
         with:
-          filename: metrics.plugin.wakatime.svg # Имя файла
-          token: ${{ secrets.METRICS_TOKEN }}   # Ваш GitHub Token
-          
-          # Настройки плагина WakaTime
-          base: "" # Скрыть базовую информацию GitHub, если нужен только WakaTime
+          filename: metrics.plugin.wakatime.svg
+          token: ${{ secrets.STAT_TOKEN }}  
+
+          base: "" 
           plugin_wakatime: yes
-          plugin_wakatime_token: ${{ secrets.WAKATIME_TOKEN }} # Ссылка на секрет
-          plugin_wakatime_days: 7                             # За последние 7 дней
-          plugin_wakatime_sections: time, projects, languages, editors # Что показывать
-          plugin_wakatime_limit: 5                            # Кол-во строк в графиках
+          plugin_wakatime_token: ${{ secrets.WAKATIME_TOKEN }} 
+          plugin_wakatime_days: 7                             
+          plugin_wakatime_sections: time, projects, languages, editors 
+          plugin_wakatime_limit: 5                           
